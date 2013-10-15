@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: yes
+  sudo: no
+  vars_files:
+    - private_vars.yml
+
+  vars:
+  - ansible_python_interpreter: /usr/bin/python
+
+  tasks:
+  - include: common/tasks/system.yml tags=system
+  - include: common/tasks/git.yml tags=version_control
+  - include: common/tasks/python_deps.yml
+  - include: common/tasks/pythonz.yml tags=python

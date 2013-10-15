@@ -1,0 +1,7 @@
+- name: Installing Version Control Systems
+  sudo: yes
+  apt: pkg=git state=installed
+  
+- name: Configuring GIT defaults
+  template: src=common/templates/.gitconfig.j2 dest=/home/${username}/.gitconfig owner=$username group=$username mode=0644 backup=yes
+
