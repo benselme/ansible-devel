@@ -1,1 +1,15 @@
- 
+- name: Checking Pythonz installation
+  register: inst_pythonz
+  file: path=/home/${username}/.pythonz state=directory
+
+- name: Installing Pythonz
+  shell: curl -kL https://raw.github.com/saghul/pythonz/master/pythonz-install | bash
+  when: inst_pythonz.changed
+
+- name: Pythonz support in bashrc
+  lineinfile: dest=/home/${username}/.bashrc
+              line="[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc"
+              regexp=".*?pythonz.*?"
+              backup=yes
+              state=present
+              create=yes

@@ -13,6 +13,4 @@
   file: path=/home/${username}/dev owner=$username group=$username state=directory
   
   
-- name: Checking Pythonz installation
-  register: inst_pythonz
-  file: path=/home/${username}/.pythonz state=directory
+
