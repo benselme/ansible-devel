@@ -27,4 +27,14 @@
   apt: pkg=oracle-java7-installer state=latest update_cache=yes
   when: inst_java.changed
 
+- name: Checking PyCharm installation
+  register: inst_pycharm
+  file: path=/home/${username}/pycharm-3.0 state=directory
 
+- name: Downloading PyCharm
+  get_url: url=$pycharm_url dest=/tmp/pycharm.tar.gz
+  when: inst_pycharm.changed
+
+- name: Installing PyCharm
+  command: tar -xzf /tmp/pycharm.tar.gz -C /home/${username}/
+  when: inst_pycharm.changed
