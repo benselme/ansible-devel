@@ -2,8 +2,6 @@
 - hosts: all
   gather_facts: yes
   sudo: no
-  vars_files:
-    - private_vars.yml
 
   vars:
   - ansible_python_interpreter: /usr/bin/python
