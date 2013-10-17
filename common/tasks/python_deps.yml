@@ -13,3 +13,7 @@
 - name: Installing libsqlite3
   sudo: yes
   apt: pkg=libsqlite3-dev state=installed
+
+- name: Installing python-dev
+  sudo: yes
+  apt: pkg=python-dev
