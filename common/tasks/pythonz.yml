@@ -16,9 +16,17 @@
 
 - name: Checking CPython 2.6.8
   register: cpython268_installed
-  shell: "[ -d ~/home/${username}/.pythonz/pythons/CPython-2.6.8/bin/python ] && echo 'Found' || echo ''"
+  shell: "[ -f /home/${username}/.pythonz/pythons/CPython-2.6.8/bin/python ] && echo 'Found' || echo ''"
 
 - name: Installing CPython 2.6.8
   when: (not cpython268_installed.stdout)
   shell: pythonz install 2.6.8
+
+- name: Checking CPython 3.3.2
+  register: cpython332_installed
+  shell: "[ -f /home/${username}/.pythonz/pythons/CPython-3.3.2/bin/python ] && echo 'Found' || echo ''"
+
+- name: Installing CPython 3.3.2
+  when: (not cpython332_installed.stdout)
+  shell: pythonz install 3.3.2
 
