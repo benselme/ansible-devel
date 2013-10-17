@@ -13,3 +13,12 @@
               backup=yes
               state=present
               create=yes
+
+- name: Checking CPython 2.6.8
+  register: cpython268_installed
+  shell: "[ -d ~/home/${username}/.pythonz/pythons/CPython-2.6.8/bin/python ] && echo 'Found' || echo ''"
+
+- name: Installing CPython 2.6.8
+  when: (not cpython268_installed.stdout)
+  shell: pythonz install 2.6.8
+
