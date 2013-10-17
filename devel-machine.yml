@@ -12,4 +12,5 @@
   - include: common/tasks/python_deps.yml tags=python
   - include: common/tasks/pythonz.yml tags=python
   - include: common/tasks/pycharm.yml tags=python
+  - include: common/tasks/debian_desktop.yml tags=debian
 
