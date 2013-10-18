@@ -1,0 +1,9 @@
+---
+
+- name: Downloading phantomjs
+  get_url: url=https://phantomjs.googlecode.com/files/${phantomjs_file}.tar.bz2 dest=/home/${username}/
+  register: inst_phantomjs
+
+- name: Unpacking phantomjs
+  command: tar -C /home/${username}/dev/ -jxvf /home/${username}/${phantomjs_file}.tar.bz2 ${phantomjs_file}/bin/phantomjs --strip-components 2 
+
