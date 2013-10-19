@@ -3,3 +3,9 @@ git_username: benselme
 git_useremail: benselme@gmail.com
 pycharm_url: http://download.jetbrains.com/python/pycharm-professional-3.0.tar.gz
 phantomjs_file: phantomjs-1.9.2-linux-x86_64
+node_version: "0.10.21"
+node_prefix: "node-v${node_version}"
+node_tarball: "${node_prefix}.tar.gz"
+node_path: "/usr/local"
+
+
