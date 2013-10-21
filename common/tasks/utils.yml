@@ -5,3 +5,7 @@
   sudo: yes
   apt: pkg=keepass2
 
+- name: Install VirtualBox
+  sudo: yes
+  apt: pkg=virtualbox
+
