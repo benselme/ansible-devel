@@ -9,3 +9,8 @@
   sudo: yes
   apt: pkg=virtualbox
 
+- name: Install chromium
+  sudo: yes
+  apt: pkg=chromium
+
+
