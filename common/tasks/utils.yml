@@ -1,0 +1,7 @@
+- name: Downloading dropbox
+  shell: cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - creates=/home/${username}/.dropbox-dist/dropboxd
+
+- name: Install Keepass2
+  sudo: yes
+  apt: pkg=keepass2
+

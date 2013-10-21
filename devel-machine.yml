@@ -19,3 +19,4 @@
   - include: common/tasks/mysql.yml tags=mysql
   - include: common/tasks/phantomjs.yml tags=testing
   - include: common/tasks/nodejs.yml
+  - include: common/tasks/utils.yml
