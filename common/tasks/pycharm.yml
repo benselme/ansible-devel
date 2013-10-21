@@ -30,7 +30,7 @@
 
 - name: Checking PyCharm installation
   register: inst_pycharm
-  file: path=/home/${username}/pycharm-3.0 state=directory
+  file: path=/home/${username}/pycharm-3.0.1 state=directory
 
 - name: Downloading PyCharm
   get_url: url=$pycharm_url dest=/tmp/pycharm.tar.gz
