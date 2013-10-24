@@ -5,3 +5,8 @@
 - name: Configuring GIT defaults
   template: src=common/templates/.gitconfig.j2 dest=/home/${username}/.gitconfig owner=$username group=$username mode=0644 backup=yes
 
+
+- name: Copying gitignore_global
+  copy: src=common/files/.gitignore_global dest=/home/${username}/dev/
+
+
