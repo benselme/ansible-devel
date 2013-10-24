@@ -2,7 +2,7 @@
 
 - name: Installing MySQL
   sudo: yes
-  apt: pkg=mysql-server,python-mysqldb,mysql-workbench state=installed
+  apt: pkg=mysql-server,python-mysqldb,mysql-workbench,libmysqlclient-dev state=installed
 
 - name: Copying MySQL-ram script
   copy: src=common/files/mysqld-ram.sh dest=/home/${username}/dev/

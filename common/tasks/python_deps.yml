@@ -17,3 +17,7 @@
 - name: Installing python-dev
   sudo: yes
   apt: pkg=python-dev
+
+- name: Installing zlib-dev
+  sudo: yes
+  apt: pkg=zlib1g-dev
