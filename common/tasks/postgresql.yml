@@ -3,7 +3,7 @@
 
 - name: Installing PostgreSQL server
   sudo: yes
-  apt: pkg=postgresql,python-psycopg2,pgadmin3 state=installed
+  apt: pkg=postgresql,python-psycopg2,pgadmin3,libpq-dev state=installed
 
 - name: Configuring postgres user
   sudo: yes
