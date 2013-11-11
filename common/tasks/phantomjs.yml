@@ -9,5 +9,5 @@
   when: (not phantomjs_installed.stdout)
 
 - name: Unpacking phantomjs
-  command: tar -C /home/${username}/dev/ -jxvf /tmp/${phantomjs_file}.tar.bz2 ${phantomjs_file}/bin/phantomjs --strip-components 2 
+  command: tar -C /home/${username}/dev/ -jxvf /tmp/${phantomjs_file}.tar.bz2 ${phantomjs_file}/bin/phantomjs --strip-components 2 && chmod +x /home/${username}/dev/phantomjs
   when: (not phantomjs_installed.stdout)

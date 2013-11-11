@@ -21,3 +21,8 @@
 - name: Installing zlib-dev
   sudo: yes
   apt: pkg=zlib1g-dev
+
+- name: Installing libxml
+  sudo: yes
+  apt: pkg=libxml2-dev,libxslt-dev state=installed
+
