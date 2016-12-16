@@ -5,7 +5,7 @@
   shell: "[ -f /home/${username}/dev/phantomjs  ] && echo 'Found' || echo ''"
 
 - name: Downloading phantomjs
-  get_url: url=https://phantomjs.googlecode.com/files/${phantomjs_file}.tar.bz2 dest=/tmp
+  get_url: url=${phantomjs_url} dest=/tmp
   when: (not phantomjs_installed.stdout)
 
 - name: Unpacking phantomjs

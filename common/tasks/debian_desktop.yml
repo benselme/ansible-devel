@@ -1,2 +1,0 @@
-# - name: Copying .fonts.conf
-#  copy: src=common/files/.fonts.conf dest=/home/${username}/ backup=yes

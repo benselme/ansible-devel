@@ -1,8 +1,31 @@
 ---
 
-- name: Installing MySQL
+- name: Checking Oracle MySQL
   sudo: yes
-  apt: pkg=mysql-server,python-mysqldb,mysql-workbench,libmysqlclient-dev state=installed
+  register: inst_mysql
+  command: dpkg --get-selections | grep mysql
+  changed_when: False
+
+
+- name: Adding mysql ppa key
+  sudo: yes
+  apt_key: id=5072E1F5 url=pgp.mit.edu  state=present
+  when: inst_mysql.changed
+
+- name: Add Oracle Mysql Repository
+  sudo: yes
+  apt_repository: repo='deb http://repo.mysql.com/apt/ubuntu/ xenial mysql-5.6' state=present
+  when: inst_mysql.changed
+
+- name: Updating all packages
+  sudo: yes
+  apt: upgrade=yes update_cache=yes state=latest
+  when: inst_mysql.changed
+
+- name: Installing MySQL 5.6
+  sudo: yes
+  apt: pkg=mysql-server,python-mysqldb,libmysqlclient-dev state=installed update_cache=yes
+  when: inst_mysql.changed
 
 - name: Copying MySQL-ram script
   copy: src=common/files/mysqld-ram.sh dest=/home/${username}/dev/

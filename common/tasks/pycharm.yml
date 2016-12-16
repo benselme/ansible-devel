@@ -1,36 +1,6 @@
-- name: Checking Oracle JDK 7 installation
-  sudo: yes
-  register: inst_java
-  file: path=/usr/lib/jvm/java-7-oracle state=directory
-
-- name: Add Oracle JDK 7 repository
-  sudo: yes
-  apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main' state=present
-  when: inst_java.changed
-
-- name: Add Oracle JDK7 source repository
-  sudo: yes
-  apt_repository: repo='deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main' state=present
-  when: inst_java.changed
-
-- name: Adding webupd8 ppa key
-  sudo: yes
-  apt_key: id=EEA14886 url=http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0xEEA14886  state=present
-  when: inst_java.changed
-
-- name: Unattended installation
-  sudo: yes
-  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
-  when: inst_java.changed
-
-- name: Installing Oracle JDK 7
-  sudo: yes
-  apt: pkg=oracle-java7-installer state=latest update_cache=yes
-  when: inst_java.changed
-
 - name: Checking PyCharm installation
   register: inst_pycharm
-  file: path=/home/${username}/pycharm-3.0.1 state=directory
+  file: path=/home/${username}/pycharm-{$pycharm_version} state=directory
 
 - name: Downloading PyCharm
   get_url: url=$pycharm_url dest=/tmp/pycharm.tar.gz

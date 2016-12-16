@@ -14,7 +14,6 @@
   - include: common/tasks/python_deps.yml tags=python
   - include: common/tasks/pythonz.yml tags=python
   - include: common/tasks/pycharm.yml tags=python
-  - include: common/tasks/debian_desktop.yml tags=debian
   - include: common/tasks/postgresql.yml tags=pgsql
   - include: common/tasks/mysql.yml tags=mysql
   - include: common/tasks/phantomjs.yml tags=testing
