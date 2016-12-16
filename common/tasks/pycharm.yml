@@ -1,11 +1,11 @@
 - name: Checking PyCharm installation
   register: inst_pycharm
-  file: path=/home/${username}/pycharm-{$pycharm_version} state=directory
+  file: path=/home/{{ username }}/pycharm-{{ pycharm_version }} state=directory
 
 - name: Downloading PyCharm
-  get_url: url=$pycharm_url dest=/tmp/pycharm.tar.gz
+  get_url: url={{ pycharm_url }} dest=/tmp/pycharm.tar.gz
   when: inst_pycharm.changed
 
 - name: Installing PyCharm
-  command: tar -xzf /tmp/pycharm.tar.gz -C /home/${username}/
+  command: tar -xzf /tmp/pycharm.tar.gz -C /home/{{ username }}/
   when: inst_pycharm.changed

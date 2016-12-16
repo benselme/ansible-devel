@@ -3,6 +3,7 @@
   gather_facts: yes
   sudo: no
   vars_files:
+    - group_vars/all
     - private_vars.yml
 
   vars:

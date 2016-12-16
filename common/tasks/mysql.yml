@@ -3,14 +3,22 @@
 - name: Checking Oracle MySQL
   sudo: yes
   register: inst_mysql
-  command: dpkg --get-selections | grep mysql
-  changed_when: False
+  command: dpkg-query -W mysql-server
+  failed_when: inst_mysql.rc > 1
+  changed_when: inst_mysql.rc == 1
 
 
-- name: Adding mysql ppa key
+- name: Add MySQL Apt Key
   sudo: yes
-  apt_key: id=5072E1F5 url=pgp.mit.edu  state=present
-  when: inst_mysql.changed
+  apt_key:
+    keyserver: ha.pool.sks-keyservers.net
+    id: A4A9406876FCBD3C456770C88C718D3B5072E1F5
+    state: present
+
+#- name: Adding mysql ppa key
+#  sudo: yes
+#  apt_key: id=5072E1F5 url=http://pgp.mit.edu  state=present
+#  when: inst_mysql.changed
 
 - name: Add Oracle Mysql Repository
   sudo: yes
@@ -28,5 +36,5 @@
   when: inst_mysql.changed
 
 - name: Copying MySQL-ram script
-  copy: src=common/files/mysqld-ram.sh dest=/home/${username}/dev/
+  copy: src=common/files/mysqld-ram.sh dest={{ dev_dir }}
 

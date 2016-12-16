@@ -10,7 +10,7 @@
   apt: pkg=curl,vim,g++ state=latest update_cache=yes
 
 - name: Creating dev folder inside user home for IDEs and frameworks
-  file: path=/home/${username}/dev owner=$username group=$username state=directory
+  file: path={{ dev_dir }} owner={{ username }} group={{ username }} state=directory
   
   
 

@@ -2,12 +2,12 @@
 
 - name: Checking phantomjs
   register: phantomjs_installed
-  shell: "[ -f /home/${username}/dev/phantomjs  ] && echo 'Found' || echo ''"
+  shell: "[ -f {{ dev_dir }}/phantomjs  ] && echo 'Found' || echo ''"
 
 - name: Downloading phantomjs
-  get_url: url=${phantomjs_url} dest=/tmp
+  get_url: url={{ phantomjs_url }} dest=/tmp
   when: (not phantomjs_installed.stdout)
 
 - name: Unpacking phantomjs
-  command: tar -C /home/${username}/dev/ -jxvf /tmp/${phantomjs_file}.tar.bz2 ${phantomjs_file}/bin/phantomjs --strip-components 2 && chmod +x /home/${username}/dev/phantomjs
+  command: tar -C {{ dev_dir }} -jxvf /tmp/{{ phantomjs_file }}.tar.bz2 {{ phantomjs_file }}/bin/phantomjs --strip-components 2 && chmod +x {{ dev_dir }}/phantomjs
   when: (not phantomjs_installed.stdout)

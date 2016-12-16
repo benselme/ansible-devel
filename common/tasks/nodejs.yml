@@ -1,7 +1,7 @@
 ---
 - name: Installing node.js
   sudo: yes
-  apt: pkg=nodejs state=installed
+  apt: pkg=nodejs,npm state=installed
 
 - name: Installing less
   sudo: yes

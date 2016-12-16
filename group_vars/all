@@ -1,8 +1,9 @@
 username: benselme
 git_username: benselme
 git_useremail: benselme@gmail.com
+dev_dir: /media/{{ username }}/data/dev
 pycharm_version: 2016.3.1
-pycharm_url: https://download.jetbrains.com/python/pycharm-professional-${pycharm_version}.tar.gz
+pycharm_url: https://download.jetbrains.com/python/pycharm-professional-{{ pycharm_version }}.tar.gz
 phantomjs_file: phantomjs-2.1.1-linux-x86_64
-phantomjs_url: https://bitbucket.org/ariya/phantomjs/downloads/{$phantomjs_file}.tar.bz2
+phantomjs_url: https://bitbucket.org/ariya/phantomjs/downloads/{{ phantomjs_file }}.tar.bz2
 
